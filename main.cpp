@@ -10,12 +10,12 @@ using namespace std;
 /*
 * Random password generator.  This generates passwords from a number, symbol, and some randomly selected syllables.  This should make the password
 * relatively easy to remember (since it's largely pronouncable) but still fulfill the requirements for upper and lower case letters, numbers, and 
-* symbols.  To make it simpler, I've left out the shuffle for now, so it's syllable, syllable, syllable, symbol, number.  There are 566 syllables,
-* 24 symbols, and a three digit number, for a total of 566^3 * 24 * 1000 = 4.35e+12 (trillion) possible passwords.
-*/
+* symbols.  Run with no argument to see usage and bits of entropy per component.  Bits of entropy is a minimum, and is based on the assumption that
+* the attacker knows the list of possible syllables and symbols and the pattern used.  Actual entropy will be higher if the attacker lacks this data.
+* */
 
 // syllable list munged from the following sources:
-// 322 most common English syllables, derived form the 5000 most commonly used English words
+// 322 most common English syllables, derived from the 5000 most commonly used English words
 // http://www.fldoe.org/core/fileparse.php/7539/urlt/manual.pdf pages 35-36
 // 400+ nonsense syllables for speech therapy practice
 // http://www.home-speech-home.com/nonsense-syllables.html
@@ -162,6 +162,7 @@ float GeneratePassword(string pattern)
 
 int main(int argc, char **argv)
 {
+	// print usage statement if argument list wasn't correct
 	if(argc != 2)
 	{
 		int numSyllables = sizeof(syllables) / sizeof(char *);
@@ -169,7 +170,7 @@ int main(int argc, char **argv)
 
 		printf("Usage:  %s template\n", argv[0]);
 		printf("where template consists of the following characters:\n");
-		printf("s for a random syllable in lower case\n");
+		//printf("s for a random syllable in lower case\n");
 		printf("S for a random syllable starting with a capital letter\n");
 		printf("n for a random digit\n");
 		printf("_ for a random symbol\n\n");
@@ -178,6 +179,7 @@ int main(int argc, char **argv)
 		return 0;
 	}
 
+	// list passwords for the user to choose from, capture entropy level for the pattern
 	float count;
 	for(int i = 0; i < 10; ++i)
 		count = GeneratePassword(argv[1]);
