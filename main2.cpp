@@ -55,8 +55,6 @@ float GeneratePassword(string pattern)
 	int numSymbols = sizeof(symbols) / sizeof(char *);
 	float count = 1.0; // count of possible passwords matching the given pattern
 
-//	Shuffle(segments);
-
 	// assemble components
 	string password = "";
 	for(int i = 0; i < pattern.length(); ++i)
@@ -65,12 +63,6 @@ float GeneratePassword(string pattern)
 		char number[16];
 		switch(pattern[i])
 		{
-		case 's':
-			syllable = consonants[GenerateRandom(numConsonants)];
-			syllable += vowels[GenerateRandom(numVowels)];
-			password += syllable;
-			count *= numConsonants * numVowels;
-			break;
 		case '_':
 			password += symbols[GenerateRandom(numSymbols)];
 			count *= numSymbols;
@@ -108,7 +100,6 @@ int main(int argc, char **argv)
 
 		printf("Usage:  %s template\n", argv[0]);
 		printf("where template consists of the following characters:\n");
-		//printf("s for a random syllable in lower case\n");
 		printf("S for a random syllable starting with a capital letter\n");
 		printf("n for a random digit\n");
 		printf("_ for a random symbol\n\n");
