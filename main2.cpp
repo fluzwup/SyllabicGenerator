@@ -34,7 +34,6 @@ const char *symbols[] =
 	".", ",", "\\"
 };
 
-
 // generates a random integer between 0 and size; not perfect distribution but close for numbers under a million
 unsigned int GenerateRandom(unsigned int size)
 {
@@ -75,6 +74,7 @@ float GeneratePassword(string pattern)
 		case 'S':
 			syllable = consonants[GenerateRandom(numConsonants)];
 			syllable += vowels[GenerateRandom(numVowels)];
+
 			syllable[0] = toupper(syllable[0]);
 			password += syllable;
 			count *= numConsonants * numVowels;
@@ -95,7 +95,8 @@ int main(int argc, char **argv)
 	// print usage statement if argument list wasn't correct
 	if(argc != 2)
 	{
-		int numSyllables = (sizeof(consonants) / sizeof(char *)) * (sizeof(vowels) / sizeof(char *));
+		int numSyllables = (sizeof(consonants) / sizeof(char *)) * 
+			(sizeof(vowels) / sizeof(char *));
 		int numSymbols = sizeof(symbols) / sizeof(char *);
 
 		printf("Usage:  %s template\n", argv[0]);
