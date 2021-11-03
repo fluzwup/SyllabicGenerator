@@ -1,7 +1,7 @@
 # SyllabicGenerator
 Program to generate passwords using random syllables, symbols, and numbers.
 There are currently two versions:  
-main.cpp uses a list of common English syllables plus some speec therapy syllables.
+main.cpp uses a list of common English syllables plus some speech therapy syllables.
 main2.cpp uses random combinations of consonant and vowel sounds from the 44 English phonemes to generate syllables.
 
 PasswordGen.html is a JavaScript version.  It has been changed to use short 2 and 3 letter Scrabble ditionary words, rather than syllables, which keeps things more pronounceable.  JavaScript is handy because it runs in any browser, and it runs client-side, so the passwords never leave the browser's machine.  
