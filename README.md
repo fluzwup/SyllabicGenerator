@@ -8,4 +8,5 @@ PasswordGen.html is a JavaScript version.  It has been changed to use short 2 an
 
 The Excel spreadsheet contains counts of 2, 3, 4, 5, 6, and 7 letter words, plus the 7776 word Diceword list, and calculates the efficiency of various combinations in terms of expected entropy bits per character of passwords of various combinations.  The combination of 2 and 3 letter Scrabble words is the best combination checked, at 3.47 bits of entropy per character, which beats Dicewords list (average length 4.239 characters), which has 3.04 bits of entropy per character.  This is proof that, for a given number of characters in your password, you're better off with a larger number of short words than a smaller number of long words with the same letter count.  You're also better off than using random decimal digits, though random hex digits and random letters are more efficient, if harder to memorize.
 
+For information on why I wrote this, and more details on the crypanalysis involved in the calculation of the password entropy, see https://www.linkedin.com/pulse/everyone-seems-getting-passwords-wrong-scot-alexander/
 
